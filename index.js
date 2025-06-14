@@ -30,6 +30,10 @@ const persons = [
       "number": "39-23-6423122"
     }
 ]
+app.get('/', (req, res) => {
+  res.send('Phonebook API is running. Use /api/persons to see data.');
+});
+
 app.get('/info', (req, res) => {
   const numberOfPersons = persons.length;
   const currentTime = new Date();
