@@ -2,6 +2,7 @@ const express = require('express')
 const app = express();
 app.use(express.json());
 const morgan = require('morgan')
+app.use(morgan('tiny')) 
 morgan.token('post-data', (req) => {
   return req.method === 'POST' ? JSON.stringify(req.body) : ''
 })
@@ -32,6 +33,10 @@ const persons = [
       "number": "39-23-6423122"
     }
 ]
+app.get('/', (req, res) => {
+  res.send('Phonebook API is running. Use /api/persons to see data.');
+});
+
 app.get('/info', (req, res) => {
   const numberOfPersons = persons.length;
   const currentTime = new Date();
