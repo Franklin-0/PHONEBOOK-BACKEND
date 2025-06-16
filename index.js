@@ -8,6 +8,9 @@ morgan.token('post-data', (req) => {
 })
 const cors = require('cors');
 app.use(cors());
+const path = require('path');
+app.use(express.static('build'));
+
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :post-data'))
 
